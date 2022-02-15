@@ -1,0 +1,23 @@
+select name as 'Product', product_type_cd as 'Type' from product;
+
+select branch.name, branch.city, employee.title, employee.last_name 
+from branch
+join employee on employee.assigned_branch_id = branch.branch_id;
+
+select distinct title from employee;
+
+select employee.last_name, employee.title, employee.superior_emp_id, employee.emp_id  
+from employee 
+join employee as e on employee.superior_emp_ID = e.emp_id;
+
+select p.name as 'Product Name', a.AVAIL_BALANCE as 'Available Balance', i.last_name as "Customer's Last Name" 
+from account as a 
+join product as p on a.product_cd = p.product_cd 
+join individual as i on a.cust_id = i.cust_id;
+
+select at2.*
+FROM acc_transaction as at2 
+join account as a on at2.account_ID = a.account_ID 
+join customer as c on a.cust_ID = c.cust_id 
+join individual as i on i.cust_id = c.cust_ID
+where i.last_name Like 'T%';
